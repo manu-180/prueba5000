@@ -12,15 +12,11 @@ class Colores(rx.State):
 
 def index() -> rx.Component:
     return rx.center(
-        rx.link(
             rx.button(
             rx.text("linkedIn"),
             color_scheme=Colores.color,
             on_click=Colores.change_color()
             ),
-        href="https://www.linkedin.com/feed/",
-        is_external=True
-        ),
         rx.button(
             rx.text("linkedIn"),
             disabled=True
