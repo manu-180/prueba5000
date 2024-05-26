@@ -2,5 +2,5 @@ import reflex as rx
 
 config = rx.Config(
     app_name="prueba_5000",
-    api_url="api.baackend.com"
+    api_url="http://api.baackend.com"
 )
