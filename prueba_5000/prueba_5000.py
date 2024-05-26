@@ -1,13 +1,13 @@
 import reflex as rx
 
 class Colores(rx.State):
-    color:str = "blue"
+    color:str = "pink"
     
     def change_color(self):
-        if self.color == "blue":
+        if self.color == "pink":
             self.color = "red"
         else:
-            self.color = "blue"
+            self.color = "pink"
 
 
 def index() -> rx.Component:
