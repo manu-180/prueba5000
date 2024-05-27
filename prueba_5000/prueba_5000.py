@@ -70,7 +70,7 @@ def index() -> rx.Component:
     
     
 def button(id):
-    rx.button(
+    return rx.button(
         rx.text(supabase.unico_horario(id)),
         color_scheme=Colores.color,
         on_click=Colores.change_color()
