@@ -57,11 +57,11 @@ class Colores(rx.State):
 
 def index() -> rx.Component:
     return rx.center(
-            rx.button(
-            rx.text(supabase.unico_horario(1)),
-            color_scheme=Colores.color,
-            on_click=Colores.change_color()
-            ),
+            button(1),
+            button(2),
+            button(3),
+            button(4),
+            button(5),
         rx.button(
             rx.text("linkedIn"),
             disabled=True
