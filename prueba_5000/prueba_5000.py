@@ -22,7 +22,7 @@ class Supabase():
         response = self.supabase.table('Horarios').select("*").execute()
         if len(response.data) > 0:
             for i in response.data:
-                data_list.append(Horarios(id=i["id"], horario= i["horario"], cant_users=["cant_users"]))
+                data_list.append(Horarios(id=i["id"], horario= i["horario"], cant_users=i["cant_users"]))
         return data_list
     
     def horarios(self):
