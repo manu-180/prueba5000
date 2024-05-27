@@ -47,23 +47,34 @@ supabase = Supabase()
 
 class Colores(rx.State):
     color:str = "pink"
+    data_state: list = []
     
+    async def data(self):
+        self.data_state = supabase.data()
+        print(self.data_state)
+        return self.data_state
+        
     def change_color(self):
         if self.color == "pink":
             self.color = "red"
         else:
             self.color = "pink"
+                
 
 
+@rx.page(
+    title= "turnos",
+    description="Taller de ceramica",
+    on_load=Colores.data
+)
 def index() -> rx.Component:
     return rx.center(
-        rx.vstack(
             button(1),
             button(2),
             button(3),
             button(4),
             button(5),
-        )
+        
     )
 
     
