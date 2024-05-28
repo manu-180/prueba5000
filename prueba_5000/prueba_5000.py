@@ -60,10 +60,10 @@ class Colores(rx.State):
         self.data_info = await supabase.data()
 
     def change_color(self):
-        if self.color == "pink":
+        if self.color == "green":
             self.color = "red"
         else:
-            self.color = "pink"
+            self.color = "green"
 
 @rx.page(
     title="turnos",
