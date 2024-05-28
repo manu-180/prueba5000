@@ -1,6 +1,8 @@
 import reflex as rx
 import os
+import dotenv
 from supabase import create_client, Client
+
 
 url: str = "https://gcjyhrlcftbkeaiqlzlm.supabase.co"
 key: str = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImdjanlocmxjZnRia2VhaXFsemxtIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MTU3MjQ3NzAsImV4cCI6MjAzMTMwMDc3MH0.MFsm9DJ9XnVnsTUK-N2SsCBf8wnhW03mGp5d2Z2Jf9Q"
@@ -12,6 +14,13 @@ class Horarios(rx.Base):
     
 
 class Supabase:
+    
+    dotenv.load_dotenv()
+    
+    SUPABASE_URL = os.environ.get("SUPABASE_URL")
+    SUPABASE_KEY = os.environ.get("SUPABASE_KEY")
+    
+    supabase: Client = create_client(SUPABASE_URL, SUPABASE_KEY)
     
     supabase: Client = create_client(url, key)
     
