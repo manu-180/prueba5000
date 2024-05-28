@@ -72,13 +72,11 @@ class Colores(rx.State):
 )
 def index() -> rx.Component:
     return rx.center(
-        rx.vstack(
             button(1),
             button(2),
             button(3),
             button(4),
             button(5),
-        )    
     )
     
 
