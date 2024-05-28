@@ -58,6 +58,7 @@ class Colores(rx.State):
     
     async def data(self):
         self.data_info = await supabase.data()
+        print(self.data_info)
 
     def change_color(self):
         if self.color == "green":
@@ -68,7 +69,7 @@ class Colores(rx.State):
 @rx.page(
     title="turnos",
     description="Taller de ceramica",
-    # on_load=Colores.data
+    on_load=Colores.data
 )
 def index() -> rx.Component:
     return rx.center(
