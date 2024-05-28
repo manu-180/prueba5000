@@ -11,7 +11,7 @@ class Horarios(rx.Base):
     cant_users = int
     
 
-class Supabase():
+class Supabase:
     
     supabase: Client = create_client(url, key)
     
@@ -38,57 +38,51 @@ class Supabase():
         for i in data:
             if i.id == id:
                 return i.horario
-            
-        
-    
+
+
 supabase = Supabase()
     
 
-
 class Colores(rx.State):
-    color:str = "pink"
-    data_state: list = []
+    color: str = "pink"
+    data_info: list = []
     
     async def data(self):
-        self.data_state = supabase.data()
-        print(self.data_state)
-        return self.data_state
-        
+        self.data_info = await supabase.data()
+
     def change_color(self):
         if self.color == "pink":
             self.color = "red"
         else:
             self.color = "pink"
-                
-
 
 @rx.page(
-    title= "turnos",
+    title="turnos",
     description="Taller de ceramica",
-    on_load=Colores.data
+    # on_load=Colores.data
 )
 def index() -> rx.Component:
     return rx.center(
+        rx.vstack(
             button(1),
             button(2),
             button(3),
             button(4),
             button(5),
-        
+        )    
     )
+    
 
-    
-    
 def button(id):
     return rx.button(
         rx.text(supabase.unico_horario(id)),
         color_scheme=Colores.color,
-        on_click=Colores.change_color()
+        on_click=Colores.change_color  # Sin paréntesis, pasar como referencia
     )
 
-async def hola(user:str) -> str:
+async def hola(user: str) -> str:
     if user == "juli":
-        return "hello juli "
+        return "hello juli"
     elif user == "cami":
         return "hello cami"
     elif user == "theo":
@@ -98,10 +92,11 @@ async def hola(user:str) -> str:
     elif user == "vieja":
         return "hello vieja"
 
-    
-    
-    
 app = rx.App()
 app.add_page(index)
 
 app.api.add_api_route("/hola/{user}", hola)
+
+# if __name__ == "__main__":
+#     print("Current working directory:", os.getcwd())
+#     app._compile()
